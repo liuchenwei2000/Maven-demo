@@ -5,12 +5,12 @@
 	id="WebApp_ID" version="3.1">
 
 	<servlet>
-	   <servlet-name>helloworldServlet</servlet-name>
-	   <servlet-class>com.lcw.servlet.HelloWorldServlet</servlet-class>
+	   <servlet-name>bookServlet</servlet-name>
+	   <servlet-class>com.lcw.servlet.BookServlet</servlet-class>
 	</servlet>
 	
 	<servlet-mapping>
-	   <servlet-name>helloworldServlet</servlet-name>
-	   <url-pattern>/helloworld.do</url-pattern>
+	   <servlet-name>bookServlet</servlet-name>
+	   <url-pattern>/book.do</url-pattern>
 	</servlet-mapping>
 </web-app>

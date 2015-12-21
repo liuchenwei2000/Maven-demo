@@ -5,6 +5,15 @@
     <title>Maven Book Store</title>
 </head>
 <body>
-	<a href="helloworld.do?book_id=book0001">show book</a>
+    <form method="POST" action="book.do">
+            Title<input type="text" name="title">
+        <p>
+            Author<input type="text" name="author">
+        <p>
+            Price<input type="text" name="price">
+        <p>
+            <input type="Submit" value="Submit" />
+    </form>
+    <a href="book.do"> Query All Books </a>
 </body>
 </html>

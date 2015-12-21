@@ -2,17 +2,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Book</title>
+    <title>Book</title>
 </head>
 <body>
-	<p>
-		${book.title}
-	</p>
-	<p>
-		${book.author}
-	</p>
-	<p>
-		${book.price}
-	</p>
+    <p>${book.pk_book}</p>
+    <p>${book.title}</p>
+    <p>${book.author}</p>
+    <p>${book.price}</p>
 </body>
 </html>
