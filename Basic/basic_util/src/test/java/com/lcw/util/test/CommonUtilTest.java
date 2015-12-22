@@ -1,7 +1,7 @@
 package com.lcw.util.test;
 
 import com.lcw.util.CommonUtil;
-import org.junit.Assert;
+import static org.junit.Assert.*;
 import org.junit.Test;
 
 /**
@@ -9,15 +9,18 @@ import org.junit.Test;
  */
 public class CommonUtilTest {
 
+    /**
+     * JUnit4 中需要执行的测试方法都应该以 @Test 进行标注。
+     */
     @Test
     public void testIsEmpty(){
-        Assert.assertTrue(CommonUtil.isEmpty((String)null));
-        Assert.assertTrue(CommonUtil.isEmpty((Object)null));
-        Assert.assertTrue(CommonUtil.isEmpty(""));
-        Assert.assertTrue(CommonUtil.isEmpty(new String[]{}));
+        assertTrue(CommonUtil.isEmpty((String)null));
+        assertTrue(CommonUtil.isEmpty((Object)null));
+        assertTrue(CommonUtil.isEmpty(""));
+        assertTrue(CommonUtil.isEmpty(new String[]{}));
 
-        Assert.assertFalse(CommonUtil.isEmpty(" "));
-        Assert.assertFalse(CommonUtil.isEmpty(new Object()));
-        Assert.assertFalse(CommonUtil.isEmpty(new String[]{"A","B"}));
+        assertFalse(CommonUtil.isEmpty(" "));
+        assertFalse(CommonUtil.isEmpty(new Object()));
+        assertFalse(CommonUtil.isEmpty(new String[]{"A","B"}));
     }
 }

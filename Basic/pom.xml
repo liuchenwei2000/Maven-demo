@@ -1,8 +1,19 @@
+<!-- project 是所有 pom.xml 的根元素，它声明了一些 POM 相关的命名空间及 xsd 元素。 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!-- modelVersion 指定了当前 POM 模型的版本，Maven3 只能是 4.0.0。 -->
     <modelVersion>4.0.0</modelVersion>
+
+    <!--
+    groupId、artifactId 和 version 这三个元素定义了一个项目基本的坐标。
+    在 Maven 中，任何 jar、pom 或者 war 都是以基于这些基本的坐标进行区分的。
+    -->
+    <!-- groupId 定义了项目属于哪个组织。 -->
     <groupId>liuchenwei</groupId>
+    <!-- artifactId 定义了项目在组织中唯一的ID。 -->
     <artifactId>maven-demo-basic</artifactId>
+    <!-- version 定义了项目当前的版本，SNAPSHOT 意为快照，说明该项目尚在开发汇中，是不稳定版本。 -->
     <version>0.0.1-SNAPSHOT</version>
     <name>Basic</name>
     <packaging>pom</packaging>
@@ -10,16 +21,20 @@
         <module>basic_jdbc</module>
         <module>basic_util</module>
     </modules>
+    <!-- dependencies 元素下可以包含多个 dependency 元素以声明项目的依赖。 -->
     <dependencies>
         <dependency>
+            <!-- JUnit 是事实上的单元测试标准，要使用它需要添加依赖。 -->
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.10</version>
+            <!-- scope 为依赖范围，默认是 compile，表示该依赖对主代码和测试代码都有效。 -->
             <scope>test</scope>
         </dependency>
     </dependencies>
     <build>
         <plugins>
+            <!-- 配置 compiler 插件使其支持 Java5，Maven 默认只支持 Java1.3。 -->
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.1</version>
