@@ -8,6 +8,7 @@
     <!--
     groupId、artifactId 和 version 这三个元素定义了一个项目基本的坐标。
     在 Maven 中，任何 jar、pom 或者 war 都是以基于这些基本的坐标进行区分的。
+    这三项在 pom 文件中是必需的。
     -->
     <!-- groupId 定义了项目属于哪个组织。 -->
     <groupId>liuchenwei</groupId>
@@ -16,6 +17,10 @@
     <!-- version 定义了项目当前的版本，SNAPSHOT 意为快照，说明该项目尚在开发汇中，是不稳定版本。 -->
     <version>0.0.1-SNAPSHOT</version>
     <name>Basic</name>
+    <!--
+    packaging 定义了项目的打包方式，通常与所生成构件的扩展名对应。
+    默认值是 jar，也可以是 war 或者 pom 等方式。
+    -->
     <packaging>pom</packaging>
     <modules>
         <module>basic_jdbc</module>
@@ -23,6 +28,7 @@
     </modules>
     <!-- dependencies 元素下可以包含多个 dependency 元素以声明项目的依赖。 -->
     <dependencies>
+        <!-- 每一个依赖都需要用坐标唯一标识 -->
         <dependency>
             <!-- JUnit 是事实上的单元测试标准，要使用它需要添加依赖。 -->
             <groupId>junit</groupId>
