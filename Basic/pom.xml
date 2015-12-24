@@ -41,7 +41,11 @@
 	<!-- build 元素下的 plugins 子元素可以声明用到的插件 -->
     <build>
         <plugins>
-            <!-- 配置 compiler 插件使其支持 Java5，Maven 默认只支持 Java1.3。 -->
+            <!-- 
+			配置 compiler 插件使其支持 Java5，Maven 默认只支持 Java1.3。
+			这是一个全局配置，所有基于此 POM 文件的任务，都会使用这些配置。
+			也就是说，不论是 maven-compiler-plugin:compile 还是 maven-compiler-plugin:testCompile 任务都会基于 JDK1.7 进行编译。
+			-->
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.1</version>
