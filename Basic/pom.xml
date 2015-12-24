@@ -38,6 +38,7 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+	<!-- build 元素下的 plugins 子元素可以声明用到的插件 -->
     <build>
         <plugins>
             <!-- 配置 compiler 插件使其支持 Java5，Maven 默认只支持 Java1.3。 -->
@@ -49,13 +50,17 @@
                     <target>1.7</target>
                 </configuration>
             </plugin>
+			<!-- maven-source-plugin 插件能够将项目的主代码打包成 jar 文件 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
                 <version>2.4</version>
+				<!-- executions 表示插件执行配置，它的每个 execution 子元素都可以用来配置执行一个任务 -->
                 <executions>
                     <execution>
+						<!-- 将其绑定到 default 生命周期的 package 阶段上。 -->
                         <phase>package</phase>
+						<!-- 会创建一个以 -sources.jar 结尾的源码包。 -->
                         <goals>
                             <goal>jar</goal>
                         </goals>
