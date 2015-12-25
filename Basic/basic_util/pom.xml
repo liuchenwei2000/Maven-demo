@@ -5,23 +5,36 @@
     <artifactId>maven-demo-basic-util</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Util</name>
+	<!-- parent 元素声明父模块，使用坐标指定 -->
     <parent>
+		<!--
+		如果将 groupId 和 version 两个元素省略，就可以继承父模块的这两个元素。
+		可继承的 POM 元素（常用的）如下：
+		groupId：项目组织ID
+		version：项目版本号
+		description：项目描述信息
+		properties：自定义的 Maven 属性
+		dependencies：项目的依赖配置
+		dependencyManagement：项目的依赖配置管理
+		build：包括项目的源码目录配置、输出目录配置、插件配置、插件管理配置等。
+		-->
         <groupId>liuchenwei</groupId>
         <artifactId>maven-demo-basic</artifactId>
         <version>0.0.1-SNAPSHOT</version>
+		<!-- 
+		relativePath 元素表示父模块 POM 的相对路径 
+		当项目构建时，Maven 会首先根据 relativePath 检查父 POM，如果找不到再从本地仓库查找。
+		relativePath 的默认值是 ../pom/xml，也就是说，Maven 默认父 POM 在上一层目录下。
+		-->
+		<!-- <relativePath>../Basic/pom.xml</relativePath> -->
     </parent>
-    <build>
-        <plugins>
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
-                <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+
+    <!-- 使用 properties 元素自定义 Maven 属性 -->
+    <properties>
+        <spring.version>4.2.2.RELEASE</spring.version>
+    </properties>
+
+    <!-- dependencies 定义的依赖可以被它的子模块继承直接使用（不论其是否真的需要） -->
     <dependencies>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -29,4 +42,27 @@
             <version>3.3.2</version>
         </dependency>
     </dependencies>
+
+    <!--
+    dependencyManagement 元素既能让子模块继承到父模块的依赖配置，又能保证子模块依赖使用的灵活性。
+    在 dependencyManagement 元素下的依赖声明不会引入实际的依赖，但它能够约束其子模块的依赖使用。
+
+    父 POM 中使用 dependencyManagement 声明依赖能够统一项目范围中依赖的版本，当依赖版本在父 POM 中声明之后，
+    子模块在使用依赖的时候就无须声明版本，也就不会发生多个子模块使用依赖版本不一致的情况，可以帮助降低以来冲突的几率。
+    如果子模块不声明依赖的使用（dependencies 元素），即是该依赖已经在父 POM 的 dependencyManagement 中声明了，也不会产生任何实际的效果。
+
+    与 dependencyManagement 元素类似的还有 pluginManagement 元素，使用方式和原理类似。
+    -->
+    <dependencyManagement>
+        <dependencies>
+            <!-- 限制本模块的所有子模块，只可以使用 4.2.2.RELEASE 版本的 spring-core -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <!-- 使用 properties 中定义的变量 -->
+                <version>${spring.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
 </project>

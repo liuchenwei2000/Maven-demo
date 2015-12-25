@@ -21,7 +21,13 @@
     packaging 定义了项目的打包方式，通常与所生成构件的扩展名对应。
     默认值是 jar，也可以是 war 或者 pom 等方式。
     -->
+	<!-- 聚合项目的 packaging 必须是 pom 方式，否则无法构建 -->
     <packaging>pom</packaging>
+	<!--
+	modules 元素是实现聚合的最核心配置，可以通过在一个打包方式为 pom 的 Maven 
+	项目中声明任意数量的 module 元素来实现模块的聚合。
+	这里每个 module 的值都是一个当前 POM 的相对目录，而这些 module 自身离开 maven-demo-basic 也能独立构建。
+	-->
     <modules>
         <module>basic_jdbc</module>
         <module>basic_util</module>
