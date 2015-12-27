@@ -19,13 +19,13 @@
                 <configuration>
 					<!-- includes 元素可以指定自动运行的测试类 -->
                     <includes>
-						<include>**/*Tests.java<include>
-						<include>**/*Testcase.java<include>
-					<includes>
+						<include>**/*Tests.java</include>
+						<include>**/*Testcase.java</include>
+					</includes>
 					<!-- excludes 元素可以排除一些符合默认命名模式的测试类 -->
 					<excludes>
-						<exclude>**/*Test.java<exclude>
-					<excludes>
+						<exclude>**/*Test.java</exclude>
+					</excludes>
                 </configuration>
             </plugin>
         </plugins>
