@@ -4,6 +4,7 @@
     <groupId>liuchenwei</groupId>
     <artifactId>maven-demo-app-web</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+	<!-- 打包方式要设置为 war -->
     <packaging>war</packaging>
     <name>Web</name>
     <parent>
@@ -11,25 +12,13 @@
         <artifactId>maven-demo-app</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.tomcat.maven</groupId>
-                <artifactId>tomcat7-maven-plugin</artifactId>
-                <version>2.2</version>
-                <configuration>
-                    <path>/app</path>
-                    <port>8080</port>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-    <dependencies>
+	<dependencies>
         <dependency>
             <groupId>liuchenwei</groupId>
             <artifactId>maven-demo-app-service</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+		<!-- 对 servlet-api 的依赖，因为运行时容器都会提供，所以依赖范围是 provided -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
@@ -42,4 +31,18 @@
             <version>1.2</version>
         </dependency>
     </dependencies>
+    <build>
+        <plugins>
+			<!-- 使用 tomcat7-maven-plugin 插件进行运行时测试 -->
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+					<path>/app</path>
+                    <port>8080</port>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
