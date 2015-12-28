@@ -80,13 +80,87 @@
         </plugins>
     </build>
 
+    <!--
+    生成站点信息（site），不需要任何配置就能让 Maven 生成项目信息，其内置插件会基于 POM 配置生成下列项目信息报告：
+    -->
+    <url>https://github.com/liuchenwei2000/Maven-demo</url>
+    <description>Maven demo</description>
+    <!-- 项目团队成员信息 -->
+    <developers>
+        <developer>
+            <id>A00001</id>
+            <name>liuchenwei</name>
+            <email>liuchenwei2000@163.com</email>
+        </developer>
+        <developer>
+            <id>A00002</id>
+            <name>zyy</name>
+            <email>zyy@163.com</email>
+        </developer>
+    </developers>
+    <!-- 项目的源码仓库信息 -->
+    <scm>
+        <connection>scm:git:https://github.com/liuchenwei2000/Maven-demo/tree/master/Basic</connection>
+        <developerConnection>scm:git:https://github.com/liuchenwei2000/Maven-demo/tree/master/Basic</developerConnection>
+        <url>https://github.com/liuchenwei2000/Maven-demo/tree/master/Basic</url>
+    </scm>
+    <!-- 项目的问题追踪系统信息 -->
+    <issueManagement>
+        <system>JIRA</system>
+        <url>https://www.atlassian.com/software/jira</url>
+    </issueManagement>
+    <!-- 项目持续集成服务器信息 -->
+    <ciManagement>
+        <system>Jenkins</system>
+        <url>http://jenkins-ci.org</url>
+    </ciManagement>
+    <!-- 项目许可证信息 -->
+    <licenses>
+        <license>
+            <name>APACHE LICENSE 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+        </license>
+    </licenses>
+
+    <!--
+    除了默认的项目信息报告，Maven 社区还提供了大量报告插件，只要稍加配置，用户就能让 Maven 自动生成各种内容丰富的报告。
+    -->
     <reporting>
         <plugins>
+            <!--
+            maven-javadoc-plugin 插件使用JDK的 javadoc 工具，基于项目的源代码生成 JavaDoc 文档。
+            该插件无需额外的配置，能在聚合项目的站点中得到包含所有模块的 Javadoc。
+            -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>2.10.3</version>
             </plugin>
+            <!--
+            CheckStyle 是一个用来帮助开发人员遵循编码规范的工具，能根据一套规则自动检查 Java 代码，使得团队能够方便地定义自己的编码规范。
+            要让 Maven 在站点中生成 CheckStyle 报告，只需要配置 maven-checkstyle-plugin 插件即可。
+            默认情况下，maven-checkstyle-plugin 会使用 Sun 定义的编码规范，也可以选择其他预置的规则，或自定义规则。
+            -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>2.17</version>
+                <!--
+                配置自定义的编码规范
+                <configuration>
+                    <configLocation>config/my-checkstyle.xml</configLocation>
+                </configuration>
+                -->
+            </plugin>
+            <!--
+            要让 Maven 在站点中生成代码检查报告，只需要配置 findbugs-maven-plugin 插件。
+            -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>3.0.0</version>
+            </plugin>
+            <!-- 要让 Maven 在站点中包含 Cobertura 测试覆盖率报告，只需要配置 cobertura-maven-plugin 插件。 -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>cobertura-maven-plugin</artifactId>
@@ -94,4 +168,5 @@
             </plugin>
         </plugins>
     </reporting>
+
 </project>
