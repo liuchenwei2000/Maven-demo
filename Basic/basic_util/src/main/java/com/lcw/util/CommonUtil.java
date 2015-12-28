@@ -3,19 +3,43 @@ package com.lcw.util;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * Created by vic on 2015/12/20.
+ * <p>公共工具类</p>
+ *
+ * @author liuchenwei
+ * @date 2015/12/20
  */
 public class CommonUtil {
 
-    public static boolean isEmpty(String s){
+    /**
+     * 判断参数字符串是否为空串
+     *
+     * @param s 字符串
+     * @return boolean
+     */
+    public static boolean isEmpty(String s)
+    {
         return StringUtils.isEmpty(s);
     }
 
-    public static boolean isEmpty(Object object){
+    /**
+     * 判断参数对象是否为 null 或空串
+     *
+     * @param object 对象
+     * @return boolean
+     */
+    public static boolean isEmpty(Object object)
+    {
         return object == null || isEmpty(object.toString());
     }
 
-    public static <T> boolean isEmpty(T[] array){
+    /**
+     * 判断参数数组是否为 null 或空
+     *
+     * @param array 数组对象
+     * @return boolean
+     */
+    public static <T> boolean isEmpty(T[] array)
+    {
         return array == null || array.length == 0;
     }
 }

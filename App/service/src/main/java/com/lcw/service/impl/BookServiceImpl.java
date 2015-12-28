@@ -9,10 +9,10 @@ import com.lcw.util.CommonUtil;
 import java.util.List;
 
 /**
- * <p></p>
+ * <p>Book 对象 Service 实现类</p>
  *
  * @author liuchenwei
- * @date 2015/12/21
+ * @date 2015/12/20
  */
 public class BookServiceImpl implements BookService
 {

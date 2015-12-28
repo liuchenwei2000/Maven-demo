@@ -1,3 +1,4 @@
+/* tb_book 表，对应 Book 对象 */
 CREATE TABLE `tb_book` (
   `pk_book` char(36) NOT NULL,
   `title` varchar(200) NOT NULL,

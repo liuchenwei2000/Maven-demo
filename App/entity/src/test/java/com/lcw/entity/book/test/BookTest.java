@@ -1,13 +1,15 @@
 package com.lcw.entity.book.test;
 
 import com.lcw.entity.book.Book;
-
-import junit.framework.Assert;
-
 import org.junit.Test;
 
+import static junit.framework.Assert.assertNotNull;
+
 /**
- * Created by vic on 2015/12/20.
+ * <p>Book 类测试用例</p>
+ *
+ * @author liuchenwei
+ * @date 2015/12/20
  */
 public class BookTest {
 
@@ -19,7 +21,7 @@ public class BookTest {
         book.setAuthor("Bruce Eckel");
         book.setPrice(100.5);
 
-        Assert.assertNotNull(book.toString());
+        assertNotNull(book.toString());
         System.out.println(book);
     }
 }

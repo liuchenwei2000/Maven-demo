@@ -10,7 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by vic on 2015/12/20.
+ * <p>Book 对象 Dao 实现类</p>
+ *
+ * @author liuchenwei
+ * @date 2015/12/20
  */
 public class BookDaoImpl implements BookDao {
 
@@ -20,7 +23,7 @@ public class BookDaoImpl implements BookDao {
         Connection connection = null;
         PreparedStatement stmt = null;
 
-        String pk_book = IDGenerator.geneate();
+        String pk_book = IDGenerator.generate();
 
         try {
             connection = DBUtil.getConnection();

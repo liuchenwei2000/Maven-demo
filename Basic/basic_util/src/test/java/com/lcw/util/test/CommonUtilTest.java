@@ -1,11 +1,16 @@
 package com.lcw.util.test;
 
 import com.lcw.util.CommonUtil;
-import static org.junit.Assert.*;
 import org.junit.Test;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 /**
- * Created by vic on 2015/12/20.
+ * <p>公共工具类测试用例</p>
+ *
+ * @author liuchenwei
+ * @date 2015/12/20
  */
 public class CommonUtilTest {
 

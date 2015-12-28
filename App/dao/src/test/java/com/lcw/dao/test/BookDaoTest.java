@@ -2,15 +2,18 @@ package com.lcw.dao.test;
 
 import com.lcw.dao.BookDao;
 import com.lcw.dao.impl.BookDaoImpl;
-
 import com.lcw.entity.book.Book;
-import static junit.framework.Assert.*;
 import org.junit.Test;
 
 import java.util.List;
 
+import static junit.framework.Assert.*;
+
 /**
- * Created by vic on 2015/12/20.
+ * <p>Book 对象 Dao 测试用例</p>
+ *
+ * @author liuchenwei
+ * @date 2015/12/20
  */
 public class BookDaoTest {
 

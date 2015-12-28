@@ -5,7 +5,11 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * Created by vic on 2015/12/20.
+ * <p>Book 类</p>
+ * 这是一个 JavaBean
+ *
+ * @author liuchenwei
+ * @date 2015/12/20
  */
 @Data
 public class Book implements Serializable {

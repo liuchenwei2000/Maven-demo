@@ -11,7 +11,10 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 /**
- * 数据库连接工厂
+ * <p>数据库连接工厂</p>
+ *
+ * @author liuchenwei
+ * @date 2015/12/20
  */
 public class ConnectionFactory {
 
@@ -22,6 +25,11 @@ public class ConnectionFactory {
 	private String username;
 	private String password;
 
+    /**
+     * 通过指定配置文件创建实例
+     *
+     * @param configFilePath 指定配置文件路径
+     */
     public ConnectionFactory(String configFilePath) {
         if(CommonUtil.isEmpty(configFilePath)) {
             throw new IllegalArgumentException("configFilePath cannot be null.");
@@ -30,10 +38,13 @@ public class ConnectionFactory {
         init();
     }
 
-	/**
-	 * 创建一个数据库连接
-	 */
-	public Connection create() throws SQLException {
+    /**
+     * 创建一个数据库连接
+     *
+     * @return java.sql.Connection
+     * @throws SQLException
+     */
+    public Connection create() throws SQLException {
 		return DriverManager.getConnection(url, username, password);
 	}
 
