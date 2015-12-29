@@ -29,6 +29,27 @@
                     <skip>true</skip>
                 </configuration>
             </plugin>
+            <!-- 使用自定义插件统计源码行数 -->
+            <plugin>
+                <groupId>liuchenwei</groupId>
+                <artifactId>maven-demo-plugin</artifactId>
+                <version>1.0-SNAPSHOT</version>
+                <configuration>
+                    <!-- 配置参数信息 -->
+                    <includes>
+                        <include>java</include>
+                        <include>properties</include>
+                    </includes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <!-- 配置目标 -->
+                        <goals>
+                            <goal>linecount</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
     <dependencies>
