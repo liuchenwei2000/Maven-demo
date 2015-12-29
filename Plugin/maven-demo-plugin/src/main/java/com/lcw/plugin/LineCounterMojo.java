@@ -88,90 +88,16 @@ public class LineCounterMojo extends AbstractMojo// 必需继承自 AbstractMojo
 
     private void countDir(File dir) throws IOException
     {
+        LineCounter lineCounter = new LineCounter(dir);
+        lineCounter.setFileFilter(new CompositeFileFilter(includes));
+
+        lineCounter.start();
+
+        int lines = lineCounter.getLines();
+        int files = lineCounter.getFiles();
+
         String path = dir.getAbsolutePath().substring(baseDir.getAbsolutePath().length());
-        int lines = count(dir);
         // getLog() 得到一个日志对象，可以用来输出日志到 Maven 命令行。
-        getLog().info(path + " : " + lines + " lines.");
-    }
-
-    private int count(File file) throws IOException
-    {
-        if (file.isFile())
-        {
-            return countFile(file);
-        } else
-        {
-            int total = 0;
-            File[] files = file.listFiles();
-            if(files != null)
-            {
-                for (File f : files)
-                {
-                    total += count(f);
-                }
-            }
-            return total;
-        }
-    }
-
-    private int countFile(File file) throws IOException
-    {
-        int lines = 0;
-        BufferedReader br = null;
-        try
-        {
-            br = new BufferedReader(new FileReader(file));
-            String s;
-            while ((s = br.readLine()) != null)
-            {
-                if (s.trim().length() > 1)
-                {
-                    lines++;
-                }
-            }
-        } catch (Exception e)
-        {
-            e.printStackTrace();
-        } finally
-        {
-            if (br != null)
-            {
-                br.close();
-            }
-        }
-        return lines;
-    }
-
-    private static class CompositeFileFilter implements FileFilter
-    {
-        private String[] fileTypes;
-
-        public CompositeFileFilter(String... fileType)
-        {
-            this.fileTypes = fileType;
-        }
-
-        @Override
-        public boolean accept(File file)
-        {
-            if (file.isDirectory())
-            {
-                return true;
-            }
-
-            String filePath = file.getName().toLowerCase();
-            if (fileTypes != null)
-            {
-                for (String fileType : fileTypes)
-                {
-                    String surffix = "." + fileType;
-                    if (filePath.endsWith(surffix))
-                    {
-                        return true;
-                    }
-                }
-            }
-            return false;
-        }
+        getLog().info("【" + path + "】 : " + lines + " lines in " + files + " files.");
     }
 }
