@@ -109,7 +109,7 @@ under the License.
    | This is a list of authentication profiles, keyed by the server-id used within the system.
    | Authentication profiles can be used whenever maven must make a connection to a remote server.
    |-->
-  <!-- 设置下载与部署仓库的认证信息 -->
+  <!-- 设置部署服务器的认证信息，比如 tomcat 服务器信息，以便将其作为 web 项目的运行环境 -->
   <servers>
     <!-- server
      | Specifies the authentication information to use when connecting to a particular server, identified by
